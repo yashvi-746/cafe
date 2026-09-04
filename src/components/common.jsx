@@ -35,7 +35,7 @@ const ProductImg = ({ cls, imgUrl, children, h="h-48", className="" }) => {
         <img 
           src={src} 
           alt="" 
-          className="w-full h-full object-contain p-2 transition-transform duration-300 group-hover:scale-105" 
+          className="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105" 
         />
       ) : null}
       <div className="absolute inset-0 bg-black/5 pointer-events-none" />
