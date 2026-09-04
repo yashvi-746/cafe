@@ -10,7 +10,7 @@ const HERO_SLIDES = [
     sub: "Single-origin pour overs & 18-hour cold brews crafted with patience in Vadodara.",
     img: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=85",
     sideImg1: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=600&q=80",
-    sideImg2: "https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=600&q=80",
+    sideImg2: "https://images.unsplash.com/photo-1577968897966-3d4325b36b61?auto=format&fit=crop&w=600&q=80",
     primaryBtn: "Explore Menu",
     primaryPage: "menu"
   },
