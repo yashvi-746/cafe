@@ -2,7 +2,7 @@
 export const CATEGORIES = ["Coffee","Tea","Cold Drinks","Breakfast","Bakery","Lunch","Desserts","Signature","Seasonal"];
 
 export const PRODUCTS = [
-  { id:"p1", name:"Ethiopian Pour Over", cat:"Coffee", price:260, veg:true, best:true, tags:["hot","light","fruity"], desc:"Single-origin Yirgacheffe, washed process, notes of jasmine and stone fruit.", cal:15, allergens:[], prep:5, rating:4.8, img:"https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80" },
+  { id:"p1", name:"Ethiopian Pour Over", cat:"Coffee", price:260, veg:true, best:true, tags:["hot","light","fruity"], desc:"Single-origin Yirgacheffe, washed process, notes of jasmine and stone fruit.", cal:15, allergens:[], prep:5, rating:4.8, img:"https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80" },
   { id:"p2", name:"Barrel Cold Brew", cat:"Coffee", price:280, veg:true, best:true, seasonal:false, tags:["cold","smooth","strong"], desc:"Eighteen-hour steeped cold brew, oak-rested for a rounded, low-acid finish.", cal:20, allergens:[], prep:3, rating:4.9, img:"https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=600&q=80" },
   { id:"p3", name:"Classic Cortado", cat:"Coffee", price:220, veg:true, best:false, tags:["hot","milk","balanced"], desc:"Equal parts espresso and steamed milk, no foam, quietly strong.", cal:90, allergens:["dairy"], prep:4, rating:4.6, img:"https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=600&q=80" },
   { id:"p4", name:"Oat Flat White", cat:"Coffee", price:250, veg:true, best:true, tags:["hot","milk","creamy"], desc:"Double ristretto over microfoamed oat milk.", cal:140, allergens:["oat"], prep:4, rating:4.7, img:"https://images.unsplash.com/photo-1577968897966-3d4325b36b61?auto=format&fit=crop&w=600&q=80" },
@@ -29,7 +29,7 @@ export const PRODUCTS = [
 ];
 
 export const EVENTS = [
-  { id:"e1", title:"Cupping: Autumn Harvest Lots", date:"Sep 14, 2026", time:"10:00 AM", loc:"Vadodara — Tasting Room", desc:"A guided cupping through four new harvest lots with our head roaster.", seats:6, price:"₹600", img:"https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80" },
+  { id:"e1", title:"Cupping: Autumn Harvest Lots", date:"Sep 14, 2026", time:"10:00 AM", loc:"Vadodara — Tasting Room", desc:"A guided cupping through four new harvest lots with our head roaster.", seats:6, price:"₹600", img:"https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80" },
   { id:"e2", title:"Live Jazz, Slow Sundays", date:"Sep 21, 2026", time:"7:00 PM", loc:"Vadodara — Courtyard", desc:"An evening of live jazz trio, natural wine, and late plates.", seats:14, price:"₹900", img:"https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&w=600&q=80" },
   { id:"e3", title:"Latte Art Workshop", date:"Sep 28, 2026", time:"4:00 PM", loc:"Vadodara — Bar", desc:"Hands-on session with our bar lead — rosettas, tulips, and pours.", seats:8, price:"₹1,200", img:"https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=600&q=80" },
 ];

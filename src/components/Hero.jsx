@@ -8,7 +8,7 @@ const HERO_SLIDES = [
     titleLine1: "Coffee, slowly.",
     titleLine2: "Life, beautifully.",
     sub: "Single-origin pour overs & 18-hour cold brews crafted with patience in Vadodara.",
-    img: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=1200&q=85",
+    img: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=85",
     sideImg1: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=600&q=80",
     sideImg2: "https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=600&q=80",
     primaryBtn: "Explore Menu",
