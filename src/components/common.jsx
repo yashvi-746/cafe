@@ -29,13 +29,13 @@ const ProductImg = ({ cls, imgUrl, children, h="h-48", className="" }) => {
   const hasWidth = (h && h.includes("w-")) || (className && className.includes("w-"));
   return (
     <div 
-      className={`nb-photo ${!src ? (cls || "nb-photo-1") : ""} ${h} ${!hasWidth ? "w-full" : ""} ${className} relative overflow-hidden shrink-0 bg-[#E8E1CF] flex items-center justify-center`}
+      className={`nb-photo ${!src ? (cls || "nb-photo-1") : ""} ${h} ${!hasWidth ? "w-full" : ""} ${className} relative overflow-hidden shrink-0 bg-[#ECE5D8] flex items-center justify-center p-1.5`}
     >
       {src ? (
         <img 
           src={src} 
           alt="" 
-          className="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105" 
+          className="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-105" 
         />
       ) : null}
       <div className="absolute inset-0 bg-black/5 pointer-events-none" />
