@@ -136,33 +136,33 @@ const Hero = ({ setPage }) => {
             <div key={`gallery-${slide.id}`} className="grid grid-cols-12 gap-3 sm:gap-4 items-center">
               
               {/* Main Featured Photo (Auto Crossfades per slide) */}
-              <div className="col-span-7 relative h-72 sm:h-96 rounded-2xl overflow-hidden shadow-2xl border border-white/10 group nb-fade-up">
+              <div className="col-span-7 relative h-72 sm:h-96 rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-black/40 flex items-center justify-center group nb-fade-up">
                 <img
                   src={slide.img}
                   alt={slide.titleLine1}
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-700 p-2"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-                  <span className="text-xs font-semibold px-3 py-1 bg-black/60 backdrop-blur-md rounded-full text-white">Featured Craft</span>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between pointer-events-none">
+                  <span className="text-xs font-semibold px-3 py-1 bg-black/70 backdrop-blur-md rounded-full text-white border border-white/10">Featured Craft</span>
                   <Sparkles size={14} className="text-[#C9A876]" />
                 </div>
               </div>
 
               {/* Side Stacked Detail Photos */}
               <div className="col-span-5 flex flex-col gap-3 sm:gap-4">
-                <div className="h-34 sm:h-44 rounded-xl overflow-hidden shadow-xl border border-white/10 group nb-fade-up" style={{ animationDelay: '0.15s' }}>
+                <div className="h-34 sm:h-44 rounded-xl overflow-hidden shadow-xl border border-white/10 bg-black/40 flex items-center justify-center group nb-fade-up" style={{ animationDelay: '0.15s' }}>
                   <img
                     src={slide.sideImg1}
                     alt="Detail 1"
-                    className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-500 p-1.5"
                   />
                 </div>
-                <div className="h-34 sm:h-44 rounded-xl overflow-hidden shadow-xl border border-white/10 group nb-fade-up" style={{ animationDelay: '0.3s' }}>
+                <div className="h-34 sm:h-44 rounded-xl overflow-hidden shadow-xl border border-white/10 bg-black/40 flex items-center justify-center group nb-fade-up" style={{ animationDelay: '0.3s' }}>
                   <img
                     src={slide.sideImg2}
                     alt="Detail 2"
-                    className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
               </div>
