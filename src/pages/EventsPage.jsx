@@ -32,7 +32,7 @@ const EventsPage = ({ setPage }) => {
         {EVENTS.map(e=>(
           <div key={e.id} className="nb-card nb-card-hover overflow-hidden flex flex-col justify-between">
             <div>
-              <ProductImg cls={e.img} imgUrl={e.img} h="h-48" />
+              <ProductImg cls={e.img} imgUrl={e.img} h="h-60" />
               <div className="p-5">
                 <p className="text-xs nb-text-mocha">{e.date} · {e.time}</p>
                 <h4 className="nb-display text-xl mt-2">{e.title}</h4>

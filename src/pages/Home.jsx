@@ -128,7 +128,7 @@ const Home = ({ setPage, openProduct, favorites, toggleFav, addToCart, user, pro
         <div className="grid md:grid-cols-3 gap-5">
           {EVENTS.map(e=>(
             <div key={e.id} className="nb-card nb-card-hover overflow-hidden">
-              <ProductImg cls={e.img} imgUrl={e.img} h="h-40" />
+              <ProductImg cls={e.img} imgUrl={e.img} h="h-56" />
               <div className="p-5">
                 <p className="text-xs nb-text-mocha">{e.date} · {e.time}</p>
                 <h4 className="nb-display text-lg mt-2">{e.title}</h4>
