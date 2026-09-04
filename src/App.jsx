@@ -25,7 +25,6 @@ import QRScannerModal from "./components/QRScannerModal";
 import { fetchProducts } from "./utils/api";
 import { DEMO_CUSTOMER, PRODUCTS as FALLBACK_PRODUCTS } from "./data/demoData";
 import CafeReelModal from "./components/CafeReelModal";
-import AmbientSoundscapes from "./components/AmbientSoundscapes";
 import CoffeeQuizModal from "./components/CoffeeQuizModal";
 
 export default function App() {
@@ -114,7 +113,6 @@ export default function App() {
       <QRScannerModal open={scannerOpen} onClose={()=>setScannerOpen(false)} setPage={setPage} />
       <CoffeeQuizModal open={quizOpen} onClose={()=>setQuizOpen(false)} openProduct={openProduct} />
       <CafeReelModal open={reelOpen} onClose={()=>setReelOpen(false)} />
-      <AmbientSoundscapes />
       <Nora setPage={setPage} openProduct={openProduct} />
     </div>
   );
