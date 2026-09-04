@@ -22,14 +22,23 @@ const SectionHeading = ({ eyebrow, title, sub, dark }) => (
   </div>
 );
 
-const ProductImg = ({ cls, imgUrl, children, h="h-48" }) => {
-  const isUrl = imgUrl && (imgUrl.startsWith("http://") || imgUrl.startsWith("https://") || imgUrl.startsWith("/"));
+const ProductImg = ({ cls, imgUrl, children, h="h-48", className="" }) => {
+  const src = (imgUrl && (imgUrl.startsWith("http://") || imgUrl.startsWith("https://") || imgUrl.startsWith("/")))
+    ? imgUrl 
+    : (cls && (cls.startsWith("http://") || cls.startsWith("https://") || cls.startsWith("/"))) ? cls : null;
+  const hasWidth = (h && h.includes("w-")) || (className && className.includes("w-"));
   return (
     <div 
-      className={`nb-photo ${!isUrl ? (cls || "nb-photo-1") : ""} ${h} w-full relative`}
-      style={isUrl ? { backgroundImage: `url(${imgUrl})`, backgroundSize: 'cover', backgroundPosition: 'center' } : {}}
+      className={`nb-photo ${!src ? (cls || "nb-photo-1") : ""} ${h} ${!hasWidth ? "w-full" : ""} ${className} relative overflow-hidden shrink-0 bg-[#E8E1CF] flex items-center justify-center`}
     >
-      <div className="absolute inset-0 bg-black/10" />
+      {src ? (
+        <img 
+          src={src} 
+          alt="" 
+          className="w-full h-full object-contain p-2 transition-transform duration-300 group-hover:scale-105" 
+        />
+      ) : null}
+      <div className="absolute inset-0 bg-black/5 pointer-events-none" />
       {children}
     </div>
   );

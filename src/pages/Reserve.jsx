@@ -62,7 +62,7 @@ const Reserve = ({ setPage }) => {
         ))}
       </div>
       <p className="text-xs font-semibold nb-text-soft mb-2 mt-6">Seating Preference & Visual Floor Map</p>
-      <div className="grid grid-cols-3 gap-2.5 mb-3">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mb-3">
         {[
           { id: "Window", name: "Window Booth 4", desc: "Street view, high natural light", status: "Available" },
           { id: "Courtyard", name: "Courtyard Garden", desc: "Open air, foliage, evening heaters", status: "Available" },

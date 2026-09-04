@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Coffee, Send, Check } from "lucide-react";
 
-const Footer = ({ setPage }) => {
+const Footer = ({ setPage, showToast }) => {
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
 
@@ -9,6 +9,7 @@ const Footer = ({ setPage }) => {
     e.preventDefault();
     if (!email || !email.includes("@")) return;
     setSubscribed(true);
+    if (showToast) showToast(`Subscribed ${email}! Check your inbox soon.`);
     setTimeout(() => {
       setSubscribed(false);
       setEmail("");

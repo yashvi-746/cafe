@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Coffee, CheckCircle2, ArrowRight, RefreshCw, Sparkles } from "lucide-react";
+import { PRODUCTS } from "../data/demoData";
 
 const CoffeeQuizModal = ({ open, onClose, openProduct }) => {
   const [step, setStep] = useState(1);
@@ -49,10 +50,12 @@ const CoffeeQuizModal = ({ open, onClose, openProduct }) => {
   };
 
   const getMatchedCoffee = () => {
-    if (pref.style === "cold") return { name: "Barrel Cold Brew", price: 280, desc: "Aged 18 hours in oak barrels with subtle oak & dark chocolate notes.", cal: 15 };
-    if (pref.style === "strong") return { name: "Cortado", price: 210, desc: "Equal parts ristretto espresso & warm textured milk.", cal: 75 };
-    if (pref.style === "sweet") return { name: "Cardamom Rose Latte", price: 290, desc: "Infused with crushed green cardamom & organic rose preserve.", cal: 210 };
-    return { name: "Oat Flat White", price: 260, desc: "Double shot espresso folded into silky textured micro-foam oat milk.", cal: 130 };
+    let targetName = "Oat Flat White";
+    if (pref.style === "cold") targetName = "Barrel Cold Brew";
+    else if (pref.style === "strong") targetName = "Classic Cortado";
+    else if (pref.style === "sweet") targetName = "Cardamom Rose Cappuccino";
+    
+    return PRODUCTS.find(p => p.name.toLowerCase().includes(targetName.toLowerCase())) || PRODUCTS[0];
   };
 
   const matched = getMatchedCoffee();

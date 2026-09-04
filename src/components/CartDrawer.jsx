@@ -28,7 +28,7 @@ const CartDrawer = ({ open, onClose, cart, updateQty, removeItem, setPage, coupo
           )}
           {cart.map((item, idx)=>(
             <div key={idx} className="flex gap-3 pb-4 border-b nb-border">
-              <ProductImg cls={item.product.img} h="h-16 w-16 shrink-0" />
+              <ProductImg cls={item.product.img} imgUrl={item.product.img} h="h-16" className="w-16 h-16 rounded shrink-0" />
               <div className="grow">
                 <div className="flex justify-between">
                   <p className="text-sm font-semibold">{item.product.name}</p>

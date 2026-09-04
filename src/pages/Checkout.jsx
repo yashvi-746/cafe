@@ -3,23 +3,24 @@ import { Check, ArrowRight, CreditCard, Wallet, Smartphone, Banknote } from "luc
 import { money } from "../utils/format";
 import { createOrder } from "../utils/api";
 
-const Checkout = ({ cart, setPage, clearCart, appliedCoupon, setOrderNum }) => {
+const Checkout = ({ cart, setPage, clearCart, appliedCoupon, setOrderNum, showToast, user }) => {
   const [step, setStep] = useState(1);
   const [orderType, setOrderType] = useState("Dine In");
-  const [name, setName] = useState("Aditi Shah");
-  const [email, setEmail] = useState("aditi.shah@email.com");
-  const [phone, setPhone] = useState("+91 98250 11223");
+  const [name, setName] = useState(user?.name || "Aditi Shah");
+  const [email, setEmail] = useState(user?.email || "aditi.shah@email.com");
+  const [phone, setPhone] = useState(user?.phone || "+91 98250 11223");
   const [address, setAddress] = useState("");
   const [payment, setPayment] = useState("UPI");
   const [placed, setPlaced] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [emailSent, setEmailSent] = useState(false);
 
   const subtotal = cart.reduce((s,i)=> s + i.unitPrice*i.qty, 0);
   const discount = appliedCoupon ? Math.round(subtotal*0.15) : 0;
   const tax = Math.round((subtotal-discount)*0.05);
   const delivery = orderType==="Delivery" ? 40 : 0;
   const total = subtotal - discount + tax + delivery;
-  const orderNumber = "NB-" + Math.floor(10000+Math.random()*89999);
+  const [orderNumber] = useState(() => "NB-" + Math.floor(10000 + Math.random() * 89999));
 
   const [confirmedCart, setConfirmedCart] = useState([]);
   const [confirmedTotal, setConfirmedTotal] = useState(0);
@@ -50,6 +51,7 @@ const Checkout = ({ cart, setPage, clearCart, appliedCoupon, setOrderNum }) => {
 Order ID: ${orderNumber}
 Date: ${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}
 Customer: ${name} (${phone})
+Email: ${email}
 Type: ${orderType}
 Payment: ${payment}
 -------------------------------------------
@@ -63,10 +65,19 @@ TOTAL PAID: ${money(confirmedTotal)}
 
     const blob = new Blob([receiptContent], { type: "text/plain;charset=utf-8" });
     const link = document.createElement("a");
+    const filename = `Receipt_${orderNumber}.txt`;
     link.href = URL.createObjectURL(blob);
-    link.download = `Receipt_${orderNumber}.txt`;
+    link.setAttribute("download", filename);
+    document.body.appendChild(link);
     link.click();
+    document.body.removeChild(link);
     URL.revokeObjectURL(link.href);
+    if (showToast) showToast(`Downloaded: ${filename}`);
+  };
+
+  const handleSendEmailInvoice = () => {
+    setEmailSent(true);
+    if (showToast) showToast(`Invoice emailed to ${email}`);
   };
 
   if (cart.length===0 && !placed) {
@@ -88,12 +99,20 @@ TOTAL PAID: ${money(confirmedTotal)}
         <div className="nb-card p-5 mt-8 text-left space-y-2">
           {confirmedCart.map((i,idx)=>(<div key={idx} className="flex justify-between text-sm"><span>{i.qty}× {i.product.name}</span><span>{money(i.unitPrice*i.qty)}</span></div>))}
           <div className="flex justify-between nb-display text-lg pt-3 border-t nb-border"><span>Total</span><span>{money(confirmedTotal)}</span></div>
-          <p className="text-xs nb-text-fade pt-1">Paid via {payment}</p>
+          <p className="text-xs nb-text-fade pt-1">Paid via {payment} · Receipt sent to {email}</p>
         </div>
+        {emailSent && (
+          <div className="mt-4 p-3 bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs rounded-lg flex items-center justify-center gap-2">
+            <Check size={14} className="text-emerald-600"/> Official tax invoice sent to <strong>{email}</strong>
+          </div>
+        )}
         <div className="flex gap-3 mt-6 justify-center flex-wrap">
           <button onClick={()=>setPage("track")} className="nb-btn nb-btn-primary px-5 py-3 text-sm nb-focus">Track Order</button>
-          <button onClick={handleDownloadReceipt} className="nb-btn nb-btn-outline px-5 py-3 text-sm nb-focus flex items-center gap-1.5">
-            Download Receipt
+          <button onClick={handleDownloadReceipt} className="nb-btn nb-btn-outline px-4 py-3 text-sm nb-focus flex items-center gap-1.5">
+            Download Receipt (.txt)
+          </button>
+          <button onClick={handleSendEmailInvoice} className="nb-btn nb-btn-brass px-4 py-3 text-sm nb-focus flex items-center gap-1.5">
+            Email Invoice
           </button>
         </div>
       </div>

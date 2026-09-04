@@ -26,7 +26,7 @@ const MenuPage = ({ openProduct, favorites, toggleFav, products }) => {
     if (sort==="Price: High to Low") list = [...list].sort((a,b)=>b.price-a.price);
     if (sort==="Rating") list = [...list].sort((a,b)=>b.rating-a.rating);
     return list;
-  }, [cat,q,vegOnly,bestOnly,sort,maxPrice]);
+  }, [cat,q,vegOnly,bestOnly,sort,maxPrice,allProducts]);
 
   return (
     <div className="pt-28 max-w-7xl mx-auto px-5 md:px-8 pb-24">

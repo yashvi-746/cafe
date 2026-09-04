@@ -80,8 +80,8 @@ export default function App() {
       <Nav page={page} setPage={setPage} cartCount={cart.reduce((s,i)=>s+i.qty,0)} openCart={()=>setCartOpen(true)} user={user} scrolled={scrolled} openScanner={()=>setScannerOpen(true)} openQuiz={()=>setQuizOpen(true)} openReel={()=>setReelOpen(true)} />
 
       <main>
-        {page !== "home" && (
-          <div className="fixed top-20 left-4 z-[55] md:left-8">
+        {!["home","admin","kitchen","staff"].includes(page) && (
+          <div className="hidden md:block fixed top-20 left-8 z-[55]">
             <button
               onClick={() => setPage("home")}
               className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold nb-bg-ink nb-text-cream shadow-lg hover:opacity-90 transition-all rounded-full border border-white/20 nb-focus"
@@ -92,7 +92,7 @@ export default function App() {
         )}
         {page==="home" && <Home setPage={setPage} openProduct={openProduct} favorites={favorites} toggleFav={toggleFav} addToCart={addToCart} user={user} products={products} />}
         {page==="menu" && <MenuPage openProduct={openProduct} favorites={favorites} toggleFav={toggleFav} products={products} />}
-        {page==="checkout" && <Checkout cart={cart} setPage={setPage} clearCart={clearCart} appliedCoupon={appliedCoupon} setOrderNum={setOrderNum} />}
+        {page==="checkout" && <Checkout cart={cart} setPage={setPage} clearCart={clearCart} appliedCoupon={appliedCoupon} setOrderNum={setOrderNum} showToast={showToast} user={user} />}
         {page==="track" && <OrderTrack setPage={setPage} />}
         {page==="reserve" && <Reserve setPage={setPage} />}
         {page==="events" && <EventsPage setPage={setPage} />}
@@ -100,19 +100,20 @@ export default function App() {
         {page==="journal" && <JournalPage />}
         {page==="about" && <AboutPage />}
         {page==="locations" && <LocationsPage />}
-        {page==="account" && <Account user={user ? DEMO_CUSTOMER : null} onLogout={()=>setUser(null)} setPage={(p)=>{ if(p==="account") setUser(DEMO_CUSTOMER); else setPage(p); }} favorites={favorites} />}
+        {page==="account" && <Account user={user} onLogout={()=>setUser(null)} setPage={(p)=>{ if(p==="account") setUser(user || DEMO_CUSTOMER); else setPage(p); }} favorites={favorites} showToast={showToast} setUser={setUser} />}
         {page==="kitchen" && <Kitchen />}
         {page==="staff" && <Staff />}
-        {page==="admin" && <Admin />}
+        {page==="admin" && <Admin products={products} setProducts={setProducts} showToast={showToast} />}
       </main>
 
-      {!["kitchen","staff","admin"].includes(page) && <Footer setPage={setPage} />}
+      {!["kitchen","staff","admin"].includes(page) && <Footer setPage={setPage} showToast={showToast} />}
 
       <ProductModal product={product} onClose={()=>setProduct(null)} onAdd={addToCart} />
       <CartDrawer open={cartOpen} onClose={()=>setCartOpen(false)} cart={cart} updateQty={updateQty} removeItem={removeItem} setPage={setPage}
         coupon={coupon} setCoupon={setCoupon} appliedCoupon={appliedCoupon} applyCoupon={applyCoupon} />
       <QRScannerModal open={scannerOpen} onClose={()=>setScannerOpen(false)} setPage={setPage} />
       <CoffeeQuizModal open={quizOpen} onClose={()=>setQuizOpen(false)} openProduct={openProduct} />
+      <CafeReelModal open={reelOpen} onClose={()=>setReelOpen(false)} />
       <AmbientSoundscapes />
       <Nora setPage={setPage} openProduct={openProduct} />
     </div>

@@ -1,5 +1,5 @@
 import { MapPin } from "lucide-react";
-import { Badge } from "../components/common";
+import { Badge, SectionHeading } from "../components/common";
 
 const LocationsPage = () => (
   <div className="pt-28 pb-24 max-w-4xl mx-auto px-5">
